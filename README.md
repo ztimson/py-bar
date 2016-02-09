@@ -5,7 +5,7 @@ CLI Progress bar
  * [ZaksCode](http://zakscode.com)
 
 ### License
-GNU License, read LICENSE for more
+GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007. read LICENSE for more
 
 ### Install
 
