@@ -2,7 +2,7 @@ from time import time
 from sys import stdout
 
 
-class ProgressBar:
+class Progressbar:
     """
     An iterable object that can display statics about its self such as time elapsed, percentage, progress as a fraction,
     iterations per second, estimated time and can generate an ascii progressbar.
