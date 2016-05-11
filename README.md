@@ -27,31 +27,50 @@ for i in progress:
 ### API
 class: Progressbar
 
-** Attributes **
+**Attributes**
+
 start - iterator starting position
+
 end - iterator ending position
+
 current - curent iteration
+
 step - number to be added to current each iteraton
+
 length - length of characters in the progress bar
+
 units - unit to append to rate
+
 color - ANSI escape code to change color of text
+
 display - automaticly display the to string with each iteration
+
 bar_format - string which dictates how things are displayed ex "{elapesed} - {eta}" could look like: 00:00 - 00:10. See the statistics portion to see what can be displayed
 
-** Available Statistics **
+**Available Statistics**
 elapsed - running time of iterator. displayed as: mm:ss
+
 percentage - percentage of completion. displayed as: 100%
+
 bar - the progress bar. displayed as: |==========|
+
 fraction - current / end. displayed as: [100/100]
+
 rate - iterations per second. displayed as: 2.00/s (unit can be changed, see units attribute)
+
 eat - estimated time until completion. displayed as: mm:ss
 
-** methods **
+**Methods**
 elapsed(self) - running time of iterator
+
 estimated_time(self) - estimated time until iterator completes
+
 fraction(self) - create string representing the fraction, complete over total
+
 generate_bar - generates the progress bar and returns string
+
 per_second - calculates the rate or speed of iterations per second
+
 percentage - floating point of completion
 
 ### Bug Reporting
