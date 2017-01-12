@@ -1,7 +1,7 @@
 # progressbar
 Python CLI Progress bar. This module is an iterator that can not only, iterate, but display its self as a progressbar along with some other usefull iformation such as iterations a second, estimated time, elapsed time, etc.
 
-```00:25 100% [====================] [100/100] 3.99/s 00:00```
+`00:25 100% [====================] [100/100] 3.99/s 00:00`
 
 ### Authors
  * [Zak Timson](http://zakscode.com)
@@ -12,16 +12,16 @@ GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007. read LICENSE for more
 ### Install
 Copy the script to your project and import it with:
 
-```import progressbar```
+`import progressbar`
 
 or
 
-```from progressbar import Progressbar```
+`from progressbar import Progressbar`
 
 ### Quick Start
 Use in a forloop:
 
-```for i in Progressbar(100)```
+`for i in Progressbar(100)`
 
 Dont like it auto writing to the stdout? Do it your self.
 
@@ -47,9 +47,9 @@ download_speed = progress.rate() # get any sort of stistics you may want, the do
 print(progress) # display progress bar. Manually iterating the object it will not display automaticly
 ```
 
-This would print (No underscores in bar. They are just there to keep spacing):
+This would print (Underscores to maintain spacing):
 
-```00:53  20% [====________________] [ 200/1000] 3.75 Mb/s 03:32```
+`00:53  20% [====________________] [ 200/1000] 3.75 Mb/s 03:32`
 
 ### API
 **Class: Progressbar**
