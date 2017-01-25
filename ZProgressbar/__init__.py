@@ -1,1 +1,1 @@
-from ZProgressbar.py import Progressbar
+from ZProgressbar import ZProgressbar
