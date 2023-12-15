@@ -1,107 +1,121 @@
-# progressbar
+<!-- Header -->
+<div id="top" align="center">
+  <br />
+
+  <!-- Logo -->
+  <img src="https://git.zakscode.com/repo-avatars/002f97340c2781ccfa5d09fde97403fd499c39a9ad5675dc0edf05a8396e9ac5" alt="Logo" width="200" height="200">
+
+  <!-- Title -->
+  ### py-bar
+
+  <!-- Description -->
+  Python ASCII Progress Bar
+
+  <!-- Repo badges -->
+  [![Version](https://img.shields.io/badge/dynamic/json.svg?label=Version&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/py-bar/tags&query=$[0].name)](https://git.zakscode.com/ztimson/py-bar/tags)
+  [![Pull Requests](https://img.shields.io/badge/dynamic/json.svg?label=Pull%20Requests&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/py-bar&query=open_pr_counter)](https://git.zakscode.com/ztimson/py-bar/pulls)
+  [![Issues](https://img.shields.io/badge/dynamic/json.svg?label=Issues&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/py-bar&query=open_issues_count)](https://git.zakscode.com/ztimson/py-bar/issues)
+
+  <!-- Links -->
+
+  ---
+  <div>
+    <a href="https://git.zakscode.com/ztimson/py-bar/releases" target="_blank">Release Notes</a>
+    • <a href="https://git.zakscode.com/ztimson/py-bar/issues/new?template=.github%2fissue_template%2fbug.md" target="_blank">Report a Bug</a>
+    • <a href="https://git.zakscode.com/ztimson/py-bar/issues/new?template=.github%2fissue_template%2fenhancement.md" target="_blank">Request a Feature</a>
+  </div>
+
+  ---
+</div>
+
+## Table of Contents
+- [py-bar](#top)
+    - [About](#about)
+       - [Built With](#built-with)
+    - [Setup](#setup)
+       - [Production](#production)
+    - [Documentation](#documentation)
+    - [License](#license)
+
+## About
+
 Python CLI Progress bar. This module is an iterator that can not only, iterate, but display its self as a progressbar along with some other usefull iformation such as iterations a second, estimated time, elapsed time, etc.
 
 `00:25 100% [====================] [100/100] 3.99/s 00:00`
 
-### Authors
- * [Zak Timson](http://zakscode.com)
+### Built With
+[![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python)](https://www.python.org/)
 
-### License
-GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007. read LICENSE for more
+## Setup
 
-### Install
-Copy the script to your project and import it with:
+<details>
+<summary>
+  <h3 id="production" style="display: inline">
+    Production
+  </h3>
+</summary>
 
-`import progressbar`
+#### Prerequisites
+- [Python](https://www.python.org/downloads/)
 
-or
+#### Instructions
+1. Download and add script to project: `curl https://git.zakscode.com/ztimson/py-bar/raw/branch/develop/progressbar.py`
+2. Use in python script:
 
-`from progressbar import Progressbar`
+```python
+from progressbar import Progressbar
 
-### Quick Start
-Use in a forloop:
+for i in Progressbar(100):
+    ...
 
-`for i in Progressbar(100)`
+# OR
 
-Dont like it auto writing to the stdout? Do it your self.
-
-```
-progress = Progressbar(100, display=False) # display false stops the auto writing
+progress = Progressbar(100, display=False) # Output manually
 for i in progress:
-	print(str(progress)) # using the to string will maunually write it
+    print(str(progress)) # Print progress bar
+    ...
 ```
 
-Maybe you dont want to use it as an iterable and you just want a progressbar. You can manually control its progress. Example, you want to view download progress:
+</details>
 
-```
-progress = Progressbar(download_size, unit=" MB/s") # create the object
+## Documentation
 
-...
+### Progressbar
 
-progress.__iter__() # This will start the clock and initiate the iterable
+#### Constructor Arguments
+| Name       | Description                                 |
+|------------|---------------------------------------------|
+| start      | Iterator starting position                  |
+| end        | Iterator ending position                    |
+| current    | Current iteration position                  |
+| step       | Added to current index after each iteration |
+| length     | ASCII progress bar string length            |
+| units      | Unit to append to progress rate             |
+| color      | ANSI escape code to color progress bar      |
+| display    | Automatically output to sdtout              |
+| bar_format | Custom progress bar format string           |
 
-...
+#### Properties
+| Name       | Description                                        |
+|------------|----------------------------------------------------|
+| elapsed    | Time ellapsed since first iteration: mm:ss         |
+| percentage | Percentage of completion: 50%                      |
+| bar        | ASCII progress bar:                 \|==========\| |
+| fraction   | Position as a fraction: \[index/total\]            |
+| rate       | Iterations per second: 2.00/s                      |
+| eta        | Estimated time until complete: mm:ss               |
 
-progress.current = 220 # set the curent progress ex. 200/1000 Mb downloaded
-download_speed = progress.rate() # get any sort of stistics you may want, the download rate for exmple
-print(progress) # display progress bar. Manually iterating the object it will not display automaticly
-```
+#### Methods
+| Name                 | Description                                  |
+|----------------------|----------------------------------------------|
+| elapsed(self)        | Elapsed time in seconds                      |
+| estimated_time(self) | Estimated time until completion in seconds   |
+| fraction(self)       | Create fraction string                       |
+| generate_bar         | Progress bar ASCII string                    |
+| per_second           | Calculate iteration rate per second as float |
+| percentage           | Percentage as a floating point               |
 
-This would print (Underscores to maintain spacing):
+## License
+Copyright © 2023 Zakary Timson | Available under the GNU General Public License
 
-`00:53  20% [====________________] [ 200/1000] 3.75 Mb/s 03:32`
-
-### API
-**Class: Progressbar**
-
-**Attributes**
-
-start - iterator starting position
-
-end - iterator ending position
-
-current - curent iteration
-
-step - number to be added to current each iteraton
-
-length - length of characters in the progress bar
-
-units - unit to append to rate
-
-color - ANSI escape code to change color of text
-
-display - automaticly display the to string with each iteration
-
-bar_format - string which dictates how things are displayed ex "{elapesed} - {eta}" could look like: 00:00 - 00:10. See the statistics portion to see what can be displayed
-
-**Available Statistics**
-
-elapsed - running time of iterator. displayed as: mm:ss
-
-percentage - percentage of completion. displayed as: 100%
-
-bar - the progress bar. displayed as: |==========|
-
-fraction - current / end. displayed as: [100/100]
-
-rate - iterations per second. displayed as: 2.00/s (unit can be changed, see units attribute)
-
-eta - estimated time until completion. displayed as: mm:ss
-
-**Methods**
-
-elapsed(self) - running time of iterator
-
-estimated_time(self) - estimated time until iterator completes
-
-fraction(self) - create string representing the fraction, complete over total
-
-generate_bar - generates the progress bar and returns string
-
-per_second - calculates the rate or speed of iterations per second
-
-percentage - floating point of completion
-
-### Bug Reporting
-
-Please submit bugs to the github [issue tracker](https://github.com/zaktimson/progressbar/issues)
+See the [license](./LICENSE) for more information.
